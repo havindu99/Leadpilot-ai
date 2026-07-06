@@ -1,0 +1,94 @@
+/* LeadPilot AI - SaaS Theme */
+
+.stApp {
+    background: linear-gradient(135deg, #0F172A 0%, #111827 45%, #1E1B4B 100%);
+    color: #F8FAFC;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background: #020617;
+    border-right: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+section[data-testid="stSidebar"] * {
+    color: #F8FAFC;
+}
+
+/* Hero Section */
+.hero {
+    padding: 36px;
+    border-radius: 24px;
+    background: rgba(30, 41, 59, 0.82);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    margin-bottom: 28px;
+}
+
+.hero h1 {
+    font-size: 52px;
+    font-weight: 900;
+    margin-bottom: 6px;
+    color: #F8FAFC;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #CBD5E1;
+}
+
+/* Metric Cards */
+.metric-card {
+    padding: 24px;
+    border-radius: 20px;
+    background: rgba(30, 41, 59, 0.86);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+    min-height: 160px;
+}
+
+.metric-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #CBD5E1;
+    margin-bottom: 12px;
+}
+
+.metric-card h2 {
+    font-size: 38px;
+    font-weight: 900;
+    color: #F8FAFC;
+    margin-bottom: 6px;
+}
+
+.metric-card p {
+    font-size: 14px;
+    color: #94A3B8;
+}
+
+.success {
+    border-left: 5px solid #10B981;
+}
+
+.warning {
+    border-left: 5px solid #F59E0B;
+}
+
+.danger {
+    border-left: 5px solid #EF4444;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #F8FAFC;
+}
+
+/* Dataframe and cards spacing */
+.block-container {
+    padding-top: 2rem;
+}
+
+/* Streamlit info boxes */
+.stAlert {
+    border-radius: 14px;
+}
