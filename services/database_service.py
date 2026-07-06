@@ -144,3 +144,64 @@ def get_priority_distribution():
 
     conn.close()
     return df
+
+def get_all_leads():
+    conn = get_connection()
+
+    df = pd.read_sql_query("""
+        SELECT
+            id,
+            source,
+            category,
+            priority,
+            lead_score,
+            sentiment,
+            urgency,
+            created_at
+        FROM leads
+        ORDER BY id DESC
+    """, conn)
+
+    conn.close()
+
+    return df
+
+def get_report_data():
+    return {
+        "stats": get_dashboard_stats(),
+        "categories": get_category_distribution(),
+        "priorities": get_priority_distribution(),
+        "recent": get_recent_leads(100)
+    }
+def clear_database():
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("DELETE FROM leads")
+
+    conn.commit()
+    conn.close()
+
+def delete_lead(lead_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "DELETE FROM leads WHERE id = ?",
+        (lead_id,)
+    )
+
+    conn.commit()
+    conn.close()
+
+def delete_lead(lead_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "DELETE FROM leads WHERE id = ?",
+        (lead_id,)
+    )
+
+    conn.commit()
+    conn.close()

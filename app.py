@@ -1,5 +1,6 @@
 import streamlit as st
 from services.database_service import init_database
+from pages.History import render_history
 
 from config.settings import APP_NAME, APP_ICON
 from components.sidebar import render_sidebar
