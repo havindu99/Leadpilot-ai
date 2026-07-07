@@ -1,43 +1,204 @@
-/* LeadPilot AI - SaaS Theme */
+/* ==========================================================================
+   LeadPilot AI - SaaS Dark Theme (Enhanced)
+   ========================================================================== */
 
+/* Global background */
 .stApp {
     background: linear-gradient(135deg, #0F172A 0%, #111827 45%, #1E1B4B 100%);
+    background-attachment: fixed;
     color: #F8FAFC;
 }
 
-/* Sidebar */
+/* ---------------------------------------------------------------------- */
+/* Hide Streamlit's default auto-generated page nav list                  */
+/* (keeps only the custom "Navigation" section built with st.page_link /  */
+/*  st.radio further down in the sidebar)                                 */
+/* ---------------------------------------------------------------------- */
+div[data-testid="stSidebarNav"] {
+    display: none;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Sidebar / Navigation                                                   */
+/* ---------------------------------------------------------------------- */
 section[data-testid="stSidebar"] {
-    background: #020617;
+    background: linear-gradient(180deg, #1E1B4B 0%, #0B1120 55%, #020617 100%);
     border-right: 1px solid rgba(148, 163, 184, 0.15);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.35);
 }
 
 section[data-testid="stSidebar"] * {
     color: #F8FAFC;
 }
 
-/* Hero Section */
+/* App title / branding block at top of sidebar */
+section[data-testid="stSidebar"] h1,
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3 {
+    background: linear-gradient(90deg, #F8FAFC 0%, #A5B4FC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Divider lines inside sidebar */
+section[data-testid="stSidebar"] hr {
+    border-color: rgba(148, 163, 184, 0.15);
+    margin: 14px 0;
+}
+
+/* Page-link / nav items (Streamlit multipage nav) */
+section[data-testid="stSidebar"] [data-testid="stSidebarNavLink"],
+section[data-testid="stSidebar"] a {
+    border-radius: 10px;
+    padding: 6px 10px;
+    margin: 2px 6px;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+section[data-testid="stSidebar"] [data-testid="stSidebarNavLink"]:hover,
+section[data-testid="stSidebar"] a:hover {
+    background: rgba(99, 102, 241, 0.18);
+    transform: translateX(2px);
+}
+
+/* Active / current page nav item */
+section[data-testid="stSidebar"] [data-testid="stSidebarNavLink"][aria-current="page"] {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.35) 0%, rgba(67, 56, 202, 0.35) 100%);
+    border-left: 3px solid #A5B4FC;
+    font-weight: 700;
+}
+
+/* Radio-style nav (st.radio used as a menu) inside sidebar */
+section[data-testid="stSidebar"] [role="radiogroup"] {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+/* Each nav row */
+section[data-testid="stSidebar"] [role="radiogroup"] label {
+    display: flex;
+    align-items: center;
+    border-radius: 14px;
+    padding: 18px 22px;
+    min-height: 64px;
+    transition: background 0.2s ease, transform 0.15s ease;
+    cursor: pointer;
+}
+
+section[data-testid="stSidebar"] [role="radiogroup"] label:hover {
+    background: rgba(99, 102, 241, 0.16);
+    transform: translateX(3px);
+}
+
+/* Hide the native radio circle, we'll draw our own indicator */
+section[data-testid="stSidebar"] [role="radiogroup"] label > div:first-child {
+    display: none;
+}
+
+/* Custom dot indicator before the label text */
+section[data-testid="stSidebar"] [role="radiogroup"] label > div:last-child {
+    position: relative;
+    padding-left: 32px;
+    font-size: 22px;
+    font-weight: 500;
+    color: #E2E8F0;
+}
+
+section[data-testid="stSidebar"] [role="radiogroup"] label > div:last-child::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: rgba(148, 163, 184, 0.35);
+}
+
+/* Selected nav item: pill background + glow + bold text + filled dot */
+section[data-testid="stSidebar"] [role="radiogroup"] label[data-checked="true"],
+section[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.4) 0%, rgba(67, 56, 202, 0.4) 100%);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.25);
+}
+
+section[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) > div:last-child {
+    color: #F8FAFC;
+    font-weight: 700;
+}
+
+section[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked) > div:last-child::before {
+    background: #EF4444;
+    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.25);
+}
+
+/* "Navigation" section label above the menu */
+section[data-testid="stSidebar"] .stMarkdown p:has(+ div[role="radiogroup"]) {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #94A3B8;
+    margin-bottom: 10px;
+}
+
+/* Sidebar footer text (e.g. "Version 1.0.0") */
+section[data-testid="stSidebar"] .stMarkdown p:last-child small,
+section[data-testid="stSidebar"] em {
+    color: #64748B;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Hero Section                                                           */
+/* ---------------------------------------------------------------------- */
 .hero {
-    padding: 36px;
+    position: relative;
+    padding: 36px 40px;
     border-radius: 24px;
     background: rgba(30, 41, 59, 0.82);
     border: 1px solid rgba(148, 163, 184, 0.18);
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
     margin-bottom: 28px;
+    overflow: hidden;
+}
+
+/* subtle glow accent behind the hero */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -60%;
+    right: -10%;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, rgba(99, 102, 241, 0) 70%);
+    pointer-events: none;
 }
 
 .hero h1 {
-    font-size: 52px;
+    position: relative;
+    font-size: 56px;
     font-weight: 900;
-    margin-bottom: 6px;
-    color: #F8FAFC;
+    margin-bottom: 8px;
+    background: linear-gradient(90deg, #F8FAFC 0%, #A5B4FC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1.2px;
 }
 
 .hero p {
-    font-size: 18px;
+    position: relative;
+    font-size: 19px;
     color: #CBD5E1;
+    font-weight: 400;
 }
 
-/* Metric Cards */
+/* ---------------------------------------------------------------------- */
+/* Metric Cards                                                           */
+/* ---------------------------------------------------------------------- */
 .metric-card {
     padding: 24px;
     border-radius: 20px;
@@ -45,50 +206,190 @@ section[data-testid="stSidebar"] * {
     border: 1px solid rgba(148, 163, 184, 0.18);
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
     min-height: 160px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.4);
+    border-color: rgba(148, 163, 184, 0.32);
 }
 
 .metric-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-size: 15px;
     font-weight: 600;
     color: #CBD5E1;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    font-size: 12.5px;
 }
 
 .metric-card h2 {
-    font-size: 38px;
+    font-size: 42px;
     font-weight: 900;
     color: #F8FAFC;
     margin-bottom: 6px;
+    line-height: 1;
+    letter-spacing: -1px;
 }
 
 .metric-card p {
     font-size: 14px;
     color: #94A3B8;
+    margin: 0;
 }
 
+/* Variant accents: left border + soft glow + tinted number */
 .success {
     border-left: 5px solid #10B981;
+    box-shadow: 0 18px 45px rgba(16, 185, 129, 0.12);
 }
+.success h2 { color: #34D399; }
 
 .warning {
     border-left: 5px solid #F59E0B;
+    box-shadow: 0 18px 45px rgba(245, 158, 11, 0.12);
 }
+.warning h2 { color: #FBBF24; }
 
 .danger {
     border-left: 5px solid #EF4444;
+    box-shadow: 0 18px 45px rgba(239, 68, 68, 0.14);
+}
+.danger h2 { color: #F87171; }
+
+.metric-card:not(.success):not(.warning):not(.danger) {
+    border-left: 5px solid #6366F1;
+}
+.metric-card:not(.success):not(.warning):not(.danger) h2 { color: #A5B4FC; }
+
+/* ---------------------------------------------------------------------- */
+/* Chart containers (Plotly)                                              */
+/* ---------------------------------------------------------------------- */
+div:has(> div.js-plotly-plot) {
+    background: rgba(30, 41, 59, 0.86);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
 }
 
-/* Headings */
+/* ---------------------------------------------------------------------- */
+/* Dataframe                                                              */
+/* ---------------------------------------------------------------------- */
+div[data-testid="stDataFrame"] {
+    background: rgba(30, 41, 59, 0.86);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 16px;
+    padding: 6px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
+}
+
+/* Custom "professional" HTML table (Recent Activity, badges etc.) */
+.pro-table {
+    background: rgba(30, 41, 59, 0.86);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 16px;
+    padding: 4px 8px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
+    overflow-x: auto;
+}
+
+.pro-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.pro-table thead th {
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 11.5px;
+    letter-spacing: 0.6px;
+    color: #94A3B8;
+    font-weight: 700;
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.pro-table tbody td {
+    padding: 12px 14px;
+    color: #E2E8F0;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.pro-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.pro-table tbody tr:hover {
+    background: rgba(99, 102, 241, 0.08);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Headings                                                               */
+/* ---------------------------------------------------------------------- */
 h1, h2, h3 {
     color: #F8FAFC;
 }
 
-/* Dataframe and cards spacing */
-.block-container {
-    padding-top: 2rem;
+h3 {
+    font-weight: 700;
+    letter-spacing: 0.2px;
 }
 
-/* Streamlit info boxes */
+/* ---------------------------------------------------------------------- */
+/* Layout spacing                                                         */
+/* ---------------------------------------------------------------------- */
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Streamlit info / alert boxes                                           */
+/* ---------------------------------------------------------------------- */
 .stAlert {
     border-radius: 14px;
+    background: rgba(30, 41, 59, 0.86);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    color: #F8FAFC;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Buttons (for a consistent SaaS feel across the app)                    */
+/* ---------------------------------------------------------------------- */
+.stButton > button {
+    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    background: linear-gradient(135deg, #6366F1 0%, #4338CA 100%);
+    color: #F8FAFC;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(99, 102, 241, 0.35);
+    border-color: rgba(165, 180, 252, 0.5);
+}
+
+/* Scrollbar polish (WebKit) */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #0F172A;
+}
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
 }

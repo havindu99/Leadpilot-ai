@@ -1,16 +1,14 @@
 import streamlit as st
 from services.database_service import init_database
-from pages.History import render_history
-
 from config.settings import APP_NAME, APP_ICON
 from components.sidebar import render_sidebar
 
-from pages.Dashboard import render_dashboard
-from pages.Message_Analyzer import render_MessageAnalyzer
-from pages.History import render_history
-from pages.Analytics import render_analytics
-from pages.Reports import render_reports
-from pages.Settings import render_settings
+from app_pages.Dashboard import render_dashboard
+from app_pages.Message_Analyzer import render_MessageAnalyzer
+from app_pages.History import render_history
+from app_pages.Analytics import render_analytics
+from app_pages.Reports import render_reports
+from app_pages.Settings import render_settings
 
 
 def load_css():
