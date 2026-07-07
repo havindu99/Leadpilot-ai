@@ -37,34 +37,42 @@ what matters.
 ```
 LeadPilot-AI/
 ├── app.py                     # Application entry point
-├── app_pages/                 # Streamlit multipage app screens
+├── app/                        # Streamlit multipage app screens
+│   ├── Analytics.py
+│   ├── Dashboard.py
+│   ├── History.py
+│   ├── Message_Analyzer.py
+│   ├── Reports.py
 │   └── Settings.py
 ├── assets/                    # Static assets (images, icons)
 ├── components/                # Reusable UI building blocks
-│   ├── charts.py              # Plotly chart builders
-│   ├── footer.py               # App footer
-│   ├── header.py               # App header / hero section
-│   ├── metric_cards.py         # KPI / stat cards
-│   └── sidebar.py               # Sidebar navigation
-├── config/                    # App configuration
-│   ├── settings.py             # General settings
-│   └── theme.py                 # Theme constants
-├── data/                       # Local/sample data
+│   ├── charts.py               # Plotly chart builders
+│   ├── footer.py                # App footer
+│   ├── header.py                # App header / hero section
+│   ├── metric_cards.py          # KPI / stat cards
+│   └── sidebar.py                # Sidebar navigation
+├── config/                     # App configuration
+│   ├── settings.py              # General settings
+│   └── theme.py                  # Theme constants
+├── data/                        # Local/sample data
 ├── database/
-│   └── leads.db                # SQLite database of leads & messages
-├── models/                     # Data models / schemas
-├── reports/                     # Generated report output
-├── services/                    # Business logic layer
-│   ├── ai_service.py             # AI/LLM message analysis
-│   ├── analytics_service.py      # Aggregations for charts & stats
-│   ├── database_service.py       # Data access layer
-│   ├── lead_scoring.py           # Lead scoring logic
-│   └── report_service.py         # Report generation
+│   └── leads.db                  # SQLite database of leads & messages
+├── models/                       # Data models / schemas
+├── reports/                      # Generated report output
+├── services/                     # Business logic layer
+│   ├── ai_service.py               # AI/LLM message analysis
+│   ├── analytics_service.py        # Aggregations for charts & stats
+│   ├── database_service.py         # Data access layer
+│   ├── lead_scoring.py             # Lead scoring logic
+│   └── report_service.py           # Report generation
 ├── styles/
-│   └── style.css                 # Custom CSS theme
-├── utils/                        # Shared helpers
+│   └── style.css                    # Custom CSS theme
+├── utils/                           # Shared helpers
+├── venv/                            # Virtual environment (not committed)
+├── .env                              # Environment variables (not committed)
+├── .gitignore
 ├── requirements.txt
-└── .env                          # Environment variables (not committed)
+└── README.md
 ```
 
 ---
@@ -127,8 +135,8 @@ The app will open at `http://localhost:8501`.
 2. LeadPilot AI classifies it (category, priority, sentiment) and assigns a
    lead score.
 3. View the results instantly on the **Dashboard**.
-4. Check **History** for a full audit trail, or **Reports** for summarized
-   analytics.
+4. Check **History** for a full audit trail, or **Reports** / **Analytics**
+   for summarized insights and trends.
 5. Adjust thresholds and preferences under **Settings**.
 
 ---
